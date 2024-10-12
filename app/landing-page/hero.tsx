@@ -28,7 +28,7 @@ export default function Hero() {
               We&#39;re working around the clock to bring you a holistic
               approach to your wellness. From top to bottom, inside and out.
             </Text>
-            <Button onClick={open}>TAKE THE QUIZ</Button>
+            <Button onClick={open}>Take the quiz</Button>
           </div>
           <div></div>
         </div>
