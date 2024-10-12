@@ -8,11 +8,11 @@ import { useQuiz } from './application/use-quiz';
 import QuizWrapper from './quiz-wrapper';
 
 export default function Hero() {
-  const { isOpen, open, close, questions } = useQuiz({});
+  const { isOpen, open, close } = useQuiz({});
 
   return (
     <>
-      {isOpen && <QuizWrapper handleClose={close} questions={questions} />}
+      {isOpen && <QuizWrapper handleClose={close} />}
       <div className="bg-brand-primary-400 md:bg-[url('/images/hero-bg.webp')] md:bg-cover md:bg-center xl:bg-right-bottom lg:bg-no-repeat max-w-[1650px] mx-auto h-[75vh] lg:h-[750px] min-h-[500px] max-h-[750px]">
         <div className="h-full flex flex-col justify-between mx-auto px-4 py-8 md:px-6 lg:px-10 max-w-[1000px]">
           <div>
