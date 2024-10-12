@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Text } from '@/design-system/text/text';
+import { BigNumberBg } from './big-number-bg';
 
 interface ImageDetails {
   src: string;
@@ -25,12 +26,6 @@ export default function HelpSection({
   direction,
   index,
 }: Props) {
-  const bgNum = index.toString();
-  const bgNumPosition =
-    direction === 'text-first'
-      ? 'md:left-[80%] lg:left-0'
-      : 'md:right-[80%] lg:left-[-65%]';
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-24 items-center overflow-hidden">
       <div
@@ -52,13 +47,11 @@ export default function HelpSection({
         }`}
       >
         <div className="max-w-sm mx-auto relative">
-          <div
-            className={`absolute inset-0 after:content-["0${bgNum}"] after:absolute after:text-[70vw] sm:after:text-[15rem] after:font-bold
-        after:text-brand-primary-100 after:z-[-1]
-        after:inset-0 after:flex after:items-center after:justify-center
-        md:after:text-[25rem] lg:after:text-[28rem] ${bgNumPosition}
-        lg:after:items-center lg:after:justify-start`}
-          ></div>
+          <BigNumberBg
+            index={index}
+            position={direction === 'text-first' ? 'left' : 'right'}
+          />
+
           <Text variant="h6" className="text-brand-primary-500 mb-4">
             {category.toUpperCase()}
           </Text>
