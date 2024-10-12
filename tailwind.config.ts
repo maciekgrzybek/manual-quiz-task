@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-import { colors } from './design-system/color-pallete';
+import { colors } from './design-system/color-palette';
 import { fontSize } from './design-system/font-size';
 
 /** @type {import('tailwindcss').Config} */
