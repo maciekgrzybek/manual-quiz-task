@@ -14,7 +14,7 @@ const helpSections: Omit<HelpSectionProps, 'index' | 'direction'>[] = [
     description:
       'we&#39;re working around the clock to bring you a holistic approach to your wellness. From top to bottom, inside and out.',
     image: {
-      src: '/images/hair-loss.png',
+      src: '/images/hair-loss.webp',
       alt: 'Hair loss man',
       width: 370,
       height: 445,
@@ -26,7 +26,7 @@ const helpSections: Omit<HelpSectionProps, 'index' | 'direction'>[] = [
     description:
       'we&#39;re working around the clock to bring you a holistic approach to your wellness. From top to bottom, inside and out.',
     image: {
-      src: '/images/erectile-dysfunction.png',
+      src: '/images/erectile-dysfunction.webp',
       alt: 'Erectile dysfunction man smiling',
       width: 370,
       height: 445,

@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <>
       {isOpen && <QuizWrapper handleClose={close} questions={questions} />}
-      <div className="bg-brand-primary-400 md:bg-[url('/images/hero-bg.png')] md:bg-cover md:bg-center xl:bg-right-bottom lg:bg-no-repeat max-w-[1650px] mx-auto h-[75vh] lg:h-[750px] min-h-[500px] max-h-[750px]">
+      <div className="bg-brand-primary-400 md:bg-[url('/images/hero-bg.webp')] md:bg-cover md:bg-center xl:bg-right-bottom lg:bg-no-repeat max-w-[1650px] mx-auto h-[75vh] lg:h-[750px] min-h-[500px] max-h-[750px]">
         <div className="h-full flex flex-col justify-between mx-auto px-4 py-8 md:px-6 lg:px-10 max-w-[1000px]">
           <div>
             <Link href="https://www.manual.co/" target="_blank">
