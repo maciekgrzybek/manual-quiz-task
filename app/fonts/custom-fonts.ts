@@ -7,8 +7,12 @@ export const ttNorms = localFont({
       weight: '700',
     },
     {
-      path: './TTNormsRegular.woff',
+      path: './TTNormsMedium.woff',
       weight: '400',
+    },
+    {
+      path: './TTNormsRegular.woff',
+      weight: '300',
     },
   ],
   variable: '--font-ttnorms',

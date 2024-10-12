@@ -40,7 +40,7 @@ export default function Home() {
       <main>
         <Hero />
         <Text
-          variant="h3"
+          variant="h2"
           className="text-brand-primary-600 text-center py-20 md:py-24"
         >
           What we can help with
