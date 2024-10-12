@@ -76,14 +76,6 @@ export class QuizFlow<TQuestion> {
     return this.state === 'finished' || this.state === 'rejected';
   }
 
-  public isFinished(): boolean {
-    return this.state === 'finished';
-  }
-
-  public isRejected(): boolean {
-    return this.state === 'rejected';
-  }
-
   public currentAnswerIndex() {
     return this.answers[this.currentQuestionIndex];
   }
