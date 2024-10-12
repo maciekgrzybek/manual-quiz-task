@@ -9,5 +9,5 @@ export const useHandleEscapeKey = (handleClose: VoidFunction) => {
     };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
-  }, []);
+  }, [handleClose]);
 };
