@@ -19,9 +19,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-ttnorms)'],
       },
-      fontSize: {
-        ...fontSize,
-      },
+      fontSize,
     },
   },
   plugins: [],

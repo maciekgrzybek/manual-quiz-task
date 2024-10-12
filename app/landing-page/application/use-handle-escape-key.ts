@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 
 export const useHandleEscapeKey = (handleClose: VoidFunction) => {
   useEffect(() => {
-    const close = (e) => {
-      if (e.keyCode === 27) {
+    const close = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
         handleClose();
       }
     };
