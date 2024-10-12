@@ -25,8 +25,8 @@ export function ChoiceTypeQuestion({
           <button
             key={index} // TODO figure this out
             onClick={() => handleAnswer(index, answer.isRejection)}
-            className={`inline-flex items-center justify-center w-full p-5 bg-white border-2 rounded-lg border-neutral-100  hover:text-neutral-900 hover:border-neutral-300 ${
-              currentAnswerIndex === index ? 'bg-brand-primary-100' : ''
+            className={`inline-flex items-center justify-center w-full p-5  border-2 rounded-lg border-neutral-100  hover:text-neutral-900 hover:border-neutral-300 ${
+              currentAnswerIndex === index ? 'bg-brand-primary-100' : 'bg-white'
             }`}
           >
             <div dangerouslySetInnerHTML={{ __html: answer.display }}></div>

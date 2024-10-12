@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { Text } from '@/design-system/text/text';
 import Hero from './landing-page/hero';
+
 import Footer from './landing-page/footer';
 
 import HelpSection, {
@@ -36,7 +36,7 @@ const helpSections: Omit<HelpSectionProps, 'index' | 'direction'>[] = [
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <main>
         <Hero />
         <Text
