@@ -12,7 +12,7 @@ const helpSections: Omit<HelpSectionProps, 'index' | 'direction'>[] = [
     title: "Hair loss needn't be irreversible. We can help!",
     category: 'HAIR LOSS',
     description:
-      "We're working around the clock to bring you a holistic approach to your wellness. From top to bottom, inside and out.",
+      'we&#39;re working around the clock to bring you a holistic approach to your wellness. From top to bottom, inside and out.',
     image: {
       src: '/images/hair-loss.png',
       alt: 'Hair loss man',
@@ -24,7 +24,7 @@ const helpSections: Omit<HelpSectionProps, 'index' | 'direction'>[] = [
     title: 'Erections can be a tricky thing. But no need to feel down!',
     category: 'Erectile dysfunction',
     description:
-      "We're working around the clock to bring you a holistic approach to your wellness. From top to bottom, inside and out.",
+      'we&#39;re working around the clock to bring you a holistic approach to your wellness. From top to bottom, inside and out.',
     image: {
       src: '/images/erectile-dysfunction.png',
       alt: 'Erectile dysfunction man smiling',

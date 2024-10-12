@@ -13,7 +13,6 @@ export default function Hero() {
   return (
     <>
       {isOpen && <QuizWrapper handleClose={close} questions={questions} />}
-
       <div className="bg-brand-primary-400 md:bg-[url('/images/hero-bg.png')] md:bg-cover md:bg-center xl:bg-right-bottom lg:bg-no-repeat max-w-[1650px] mx-auto h-[75vh] lg:h-[750px] min-h-[500px] max-h-[750px]">
         <div className="h-full flex flex-col justify-between mx-auto px-4 py-8 md:px-6 lg:px-10 max-w-[1000px]">
           <div>
@@ -26,8 +25,8 @@ export default function Hero() {
               Be good to yourself
             </Text>
             <Text variant="body" className="mb-10 text-brand-primary-600">
-              We're working around the clock to bring you a holistic approach to
-              your wellness. From top to bottom, inside and out.
+              We&#39;re working around the clock to bring you a holistic
+              approach to your wellness. From top to bottom, inside and out.
             </Text>
             <Button onClick={open}>TAKE THE QUIZ</Button>
           </div>
