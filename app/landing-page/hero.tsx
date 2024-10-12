@@ -20,7 +20,7 @@ export default function Hero() {
               <Image src="/images/logo.svg" width={40} height={40} alt="Logo" />
             </Link>
           </div>
-          <div className="flex flex-col items-start justify-center md:max-w-[500px]">
+          <div className="flex flex-col items-start justify-center md:max-w-[470px]">
             <Text variant="h1" className="text-brand-primary-600 mb-6">
               Be good to yourself
             </Text>

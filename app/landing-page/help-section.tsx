@@ -27,7 +27,7 @@ export default function HelpSection({
   index,
 }: Props) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-24 items-center overflow-hidden">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 md:gap-24 lg:gap-[7.5rem] items-center overflow-hidden">
       <div
         className={`${
           direction === 'text-first' ? 'sm:order-2' : 'sm:order-1'

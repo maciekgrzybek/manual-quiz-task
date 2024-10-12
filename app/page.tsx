@@ -41,13 +41,13 @@ export default function Home() {
         <Hero />
         <Text
           variant="h2"
-          className="text-brand-primary-600 text-center py-20 md:py-24"
+          className="text-brand-primary-600 text-center py-20 md:py-[70px] px-4"
         >
           What we can help with
         </Text>
-        <section className="mb-20 md:mb-28">
+        <section className="mb-20 md:mb-24">
           <div className="mx-auto px-4 max-w-[850px]">
-            <div className="mb-20 gap-20 flex flex-col md:mb-28 md:gap-28">
+            <div className="gap-20 flex flex-col md:gap-28 lg:gap-44">
               {helpSections.map((section, index) => (
                 <HelpSection
                   key={section.title}

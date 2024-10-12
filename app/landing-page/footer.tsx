@@ -47,10 +47,9 @@ export default function Footer() {
   return (
     <footer className="bg-brand-primary-200 ">
       <div className="container mx-auto px-4 md:px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 py-14 md:py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 py-14 md:py-16 lg:py-[72px]">
           <div className="md:col-span-2 mb-6 md:mb-0">
             <Image src="/images/logo.svg" width={50} height={50} alt="Logo" />
-            {/* Add additional content for the logo section if needed */}
           </div>
           {menuItems.map((section) => (
             <div key={section.title}>
