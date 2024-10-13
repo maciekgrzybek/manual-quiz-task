@@ -6,6 +6,7 @@ import Button from '@/design-system/button/button';
 import { AnswerIndex, Answers, QuestionIndex, QuizState } from '@/app/quiz';
 import { QuestionFactory } from './question-factory';
 import { DefaultFinalState } from './default-final-state';
+import { ProgressBar } from './progress-bar';
 
 interface Props {
   questions: Question[];
@@ -45,6 +46,9 @@ export function Quiz({
 
   return (
     <div>
+      {state === 'in-progress' && (
+        <ProgressBar step={currentQuestionIndex} max={questions.length} />
+      )}
       <QuestionFactory
         currentQuestion={currentQuestion}
         handleAnswer={handleAnswer}
