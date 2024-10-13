@@ -1,4 +1,4 @@
-type QuizState = 'in-progress' | 'finished' | 'rejected';
+export type QuizState = 'in-progress' | 'finished' | 'rejected';
 
 export type QuestionIndex = number;
 export type AnswerIndex = number;
