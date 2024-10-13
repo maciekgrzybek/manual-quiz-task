@@ -1,113 +1,14 @@
-import React from 'react';
-import { Quiz } from '../quiz/ui/quiz';
+import React, { useState } from 'react';
+import { Quiz } from '@/app/quiz';
 import { useHandleEscapeKey } from './application/use-handle-escape-key';
-
-type QuestionType = 'ChoiceType';
-
-export interface Answer {
-  display: string;
-  value: string | boolean;
-  isRejection: boolean;
-}
-
-export interface Question {
-  question: string;
-  type: QuestionType;
-  options: Answer[];
-}
+import { quizStorage } from './application/quiz-storage';
+import { Text } from '@/design-system/text/text';
+import Button from '@/design-system/button/button';
+import { getQuizInitialState } from './application/quiz-initial-state';
 
 interface Props {
   handleClose: VoidFunction;
 }
-
-const getQuestions = () => {
-  /*
-   * Questions could come from an API, but for sake of this task
-   * we can keep it as a hard-coded list.
-   * If it would come from API, we would also do some validation
-   * (zod, class-validator, typeBox or something similar)
-   */
-  const questions: Question[] = [
-    {
-      question: 'Which image best matches your hair loss?',
-      type: 'ChoiceType',
-      options: [
-        {
-          display:
-            '<img alt="Temples" src="https://s3-eu-west-1.amazonaws.com/manualco/questions/temples-hairloss.png" srcset="https://s3-eu-west-1.amazonaws.com/manualco/questions/temples-hairloss%402x.png 2x" />',
-          value: 'Temples',
-          isRejection: false,
-        },
-        {
-          display:
-            '<img alt="Temples & Crown" src="https://s3-eu-west-1.amazonaws.com/manualco/questions/templescrown-hairloss.png" srcset="https://s3-eu-west-1.amazonaws.com/manualco/questions/templescrown-hairloss%402 x.png 2x"/>',
-          value: 'Temples & Crown',
-          isRejection: false,
-        },
-        {
-          display:
-            '<img alt="Patchy" src="https://s3-eu-west-1.amazonaws.com/manualco/questions/patchy-hairloss.png" srcset="https://s3-eu-west-1.amazonaws.com/manualco/questions/patchy-hairloss%402x.png 2x"/>',
-          value: 'Patchy',
-          isRejection: true,
-        },
-        {
-          display:
-            '<img alt="Moderate" src="https://s3-eu-west-1.amazonaws.com/manualco/questions/moderate-hairloss.png" srcset="https://s3-eu-west-1.amazonaws.com/manualco/questions/moderate-hairloss%402x.pn g 2x" />',
-          value: 'Moderate',
-          isRejection: false,
-        },
-        {
-          display:
-            '<img alt="Extensive" src="https://s3-eu-west-1.amazonaws.com/manualco/questions/extensive-hairloss.png" srcset="https://s3-eu-west-1.amazonaws.com/manualco/questions/extensive-hairloss%402x.pn g 2x"/>',
-          value: 'Extensive',
-          isRejection: true,
-        },
-        {
-          display:
-            '<img alt="Complete" src="https://s3-eu-west-1.amazonaws.com/manualco/questions/complete-hairloss.png" srcset="https://s3-eu-west-1.amazonaws.com/manualco/questions/complete-hairloss%402x.pn g 2x" />',
-          value: 'Complete',
-          isRejection: true,
-        },
-      ],
-    },
-    {
-      question:
-        'Have you ever been diagnosed with prostate cancer, or are you currently undergoing PSA/Prostate monitoring?',
-      type: 'ChoiceType',
-      options: [
-        {
-          display: 'Yes',
-          value: true,
-          isRejection: true,
-        },
-        {
-          display: 'No',
-          value: false,
-          isRejection: false,
-        },
-      ],
-    },
-    {
-      question:
-        'Have you ever been diagnosed with breast cancer or noticed any changes in your breast tissue such as lumps, pain, nipple discharge or swelling?',
-      type: 'ChoiceType',
-      options: [
-        {
-          display: 'Yes',
-          value: true,
-          isRejection: true,
-        },
-        {
-          display: 'No',
-          value: false,
-          isRejection: false,
-        },
-      ],
-    },
-  ];
-
-  return questions;
-};
 
 export default function QuizWrapper({ handleClose }: Props) {
   /*
@@ -115,7 +16,9 @@ export default function QuizWrapper({ handleClose }: Props) {
    * so we could get the benefits of SSG.
    */
   useHandleEscapeKey(handleClose);
-  const questions = getQuestions();
+  const [mode, setMode] = useState<'continue' | 'start-fresh' | null>(null);
+  const { questions, previousAnswers, previousQuestionIndex } =
+    getQuizInitialState();
 
   return (
     <div className="fixed inset-0 overflow-auto bg-white z-50 overscroll-none">
@@ -126,7 +29,42 @@ export default function QuizWrapper({ handleClose }: Props) {
         >
           X
         </button>
-        <Quiz questions={questions} />
+
+        {previousAnswers && mode === null ? (
+          <div>
+            <Text variant="h4" className="text-center mb-8">
+              We can see that you already started the quiz. Do you want to
+              continue or start fresh?
+            </Text>
+            <div className="flex gap-3 justify-center mx-auto">
+              <Button variant="secondary" onClick={() => setMode('continue')}>
+                Continue
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  setMode('start-fresh');
+                  quizStorage.clearAnswers();
+                }}
+              >
+                Start fresh
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <Quiz
+            questions={questions}
+            onAnswer={quizStorage.saveAnswers}
+            previousQuizState={{
+              answers:
+                mode === 'continue' && previousAnswers
+                  ? previousAnswers
+                  : undefined,
+              questionIndex:
+                mode === 'continue' ? previousQuestionIndex : undefined,
+            }}
+          />
+        )}
       </div>
     </div>
   );

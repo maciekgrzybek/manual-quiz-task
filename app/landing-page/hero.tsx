@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { Text } from '@/design-system/text/text';
 import Button from '@/design-system/button/button';
 import Link from 'next/link';
-import { useQuiz } from './application/use-quiz';
+import { useQuizVisibility } from './application/use-quiz-visibility';
 import QuizWrapper from './quiz-wrapper';
 
 export default function Hero() {
-  const { isOpen, open, close } = useQuiz({});
+  const { isOpen, open, close } = useQuizVisibility();
 
   return (
     <>

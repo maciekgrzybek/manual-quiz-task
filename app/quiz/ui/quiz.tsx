@@ -5,20 +5,36 @@ import { Question, useQuizFlow } from '../application/use-quiz-flow';
 import Button from '@/design-system/button/button';
 import { Text } from '@/design-system/text/text';
 import { ChoiceTypeQuestion } from './choice-type-question';
+import { AnswerIndex, Answers, QuestionIndex } from '@/app/quiz';
 
 interface Props {
   questions: Question[];
+  onAnswer: (questionIndex: QuestionIndex, answerIndex: AnswerIndex) => void;
+  previousQuizState: {
+    answers?: Answers;
+    questionIndex?: QuestionIndex;
+  };
 }
 
-export function Quiz({ questions }: Props) {
+export function Quiz({ questions, onAnswer, previousQuizState }: Props) {
   const {
     currentQuestion,
+    currentQuestionIndex,
     answerQuestion,
     goBack,
     canGoBack,
     state,
     currentAnswerIndex,
-  } = useQuizFlow({ questions });
+  } = useQuizFlow({
+    questions,
+    previousAnswers: previousQuizState.answers,
+    questionIndex: previousQuizState.questionIndex,
+  });
+
+  const handleAnswer = (answerIndex: AnswerIndex, isRejection: boolean) => {
+    answerQuestion(answerIndex, isRejection);
+    onAnswer(currentQuestionIndex, answerIndex);
+  };
 
   const renderQuestion = () => {
     if (!currentQuestion) return null;
@@ -28,7 +44,7 @@ export function Quiz({ questions }: Props) {
         return (
           <ChoiceTypeQuestion
             question={currentQuestion}
-            handleAnswer={answerQuestion}
+            handleAnswer={handleAnswer}
             currentAnswerIndex={currentAnswerIndex}
           />
         );
@@ -62,7 +78,7 @@ export function Quiz({ questions }: Props) {
             <Text variant="body">
               We have the perfect treatment for your hair loss. Proceed to{' '}
               <a
-                href="www.manual.co"
+                href="https://www.manual.co"
                 className="text-brand-primary-400 font-bold"
               >
                 www.manual.co

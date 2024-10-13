@@ -1,23 +1,18 @@
 type QuizState = 'in-progress' | 'finished' | 'rejected';
 
-type QuestionIndex = number;
-type AnswerIndex = number;
+export type QuestionIndex = number;
+export type AnswerIndex = number;
+export type Answers = Record<QuestionIndex, AnswerIndex>;
 
 export class QuizFlow<TQuestion> {
-  private questions: TQuestion[];
-  private currentQuestionIndex: QuestionIndex;
   private state: QuizState;
-  private answers: Record<QuestionIndex, AnswerIndex>;
 
   constructor(
-    questions: TQuestion[],
-    currentQuestionIndex: QuestionIndex = 0,
-    answers: Record<QuestionIndex, AnswerIndex> = {}
+    private readonly questions: TQuestion[],
+    private currentQuestionIndexInternal: QuestionIndex = 0,
+    private readonly answers: Answers = {}
   ) {
-    this.questions = questions;
-    this.currentQuestionIndex = currentQuestionIndex;
     this.state = 'in-progress';
-    this.answers = answers;
   }
 
   public getCurrentQuestion(): TQuestion | null {
@@ -25,25 +20,25 @@ export class QuizFlow<TQuestion> {
       return null;
     }
 
-    return this.questions[this.currentQuestionIndex] || null;
+    return this.questions[this.currentQuestionIndexInternal] || null;
   }
 
   public answerQuestion(answerIndex: number, isFailure: boolean): void {
     if (this.isCompleted()) {
       return;
     }
-    this.answers[this.currentQuestionIndex] = answerIndex;
+    this.answers[this.currentQuestionIndexInternal] = answerIndex;
     if (isFailure) {
       this.state = 'rejected';
       return;
     }
 
-    if (this.currentQuestionIndex === this.questions.length - 1) {
+    if (this.currentQuestionIndexInternal === this.questions.length - 1) {
       this.state = 'finished';
       return;
     }
 
-    this.currentQuestionIndex++;
+    this.currentQuestionIndexInternal++;
   }
 
   public goBack(): void {
@@ -54,7 +49,7 @@ export class QuizFlow<TQuestion> {
     if (!this.canGoBack()) {
       return;
     }
-    this.currentQuestionIndex--;
+    this.currentQuestionIndexInternal--;
   }
 
   public getAnswers(): Record<QuestionIndex, AnswerIndex> {
@@ -66,17 +61,24 @@ export class QuizFlow<TQuestion> {
   }
 
   public canGoBack(): boolean {
-    if (this.currentQuestionIndex === 0 && this.state !== 'in-progress') {
+    if (
+      this.currentQuestionIndexInternal === 0 &&
+      this.state !== 'in-progress'
+    ) {
       return true;
     }
-    return this.currentQuestionIndex > 0;
+    return this.currentQuestionIndexInternal > 0;
   }
 
   public isCompleted(): boolean {
     return this.state === 'finished' || this.state === 'rejected';
   }
 
+  public currentQuestionIndex() {
+    return this.currentQuestionIndexInternal;
+  }
+
   public currentAnswerIndex() {
-    return this.answers[this.currentQuestionIndex];
+    return this.answers[this.currentQuestionIndexInternal];
   }
 }

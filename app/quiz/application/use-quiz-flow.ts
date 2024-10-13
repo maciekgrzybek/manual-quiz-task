@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { QuizFlow } from '../domain/quiz-flow';
+import { AnswerIndex, Answers, QuestionIndex, QuizFlow } from '@/app/quiz';
 
 // This is obviously just a showcase of how analytics could work with this feature.
 // We keep it inside of the application hook, which means that domain remains pure.
@@ -34,15 +34,23 @@ export type Question = ChoiceTypeQuestion;
 
 interface QuizData {
   questions: Question[];
+  previousAnswers?: Answers;
+  questionIndex?: QuestionIndex;
 }
 
 export type AnswerQuestion = (
-  answerIndex: number,
+  answerIndex: AnswerIndex,
   isRejection: boolean
 ) => void;
 
 export const useQuizFlow = (quizData: QuizData, analytics: Analytics = {}) => {
-  const quizFlow = useRef(new QuizFlow(quizData.questions));
+  const quizFlow = useRef(
+    new QuizFlow(
+      quizData.questions,
+      quizData.questionIndex,
+      quizData.previousAnswers
+    )
+  );
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(
     quizFlow.current.getCurrentQuestion()
   );
@@ -54,7 +62,7 @@ export const useQuizFlow = (quizData: QuizData, analytics: Analytics = {}) => {
   }, [currentQuestion, analytics]);
 
   const answerQuestion: AnswerQuestion = (
-    answerIndex: number,
+    answerIndex: AnswerIndex,
     isRejection: boolean
   ) => {
     if (!quizFlow) return;
@@ -78,6 +86,7 @@ export const useQuizFlow = (quizData: QuizData, analytics: Analytics = {}) => {
   return {
     currentQuestion,
     answerQuestion,
+    currentQuestionIndex: quizFlow.current.currentQuestionIndex(),
     currentAnswerIndex: quizFlow.current.currentAnswerIndex(),
     goBack,
     canGoBack: quizFlow?.current.canGoBack() || false,
