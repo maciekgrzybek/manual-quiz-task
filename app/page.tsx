@@ -1,4 +1,4 @@
-import { Text } from '@/design-system/text/text';
+import { Text } from '@/design-system';
 import Hero from './landing-page/hero';
 
 import Footer from './landing-page/footer';

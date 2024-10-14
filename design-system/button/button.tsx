@@ -1,13 +1,13 @@
 import React from 'react';
 
-type Variant = 'primary' | 'secondary'; // For the sake of the demo, we'll only have one variant
+type Variant = 'primary' | 'secondary';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant?: Variant;
 }
 
-const Button = ({
+export const Button = ({
   children,
   variant = 'primary',
   className,
@@ -47,5 +47,3 @@ const Button = ({
     </button>
   );
 };
-
-export default Button;

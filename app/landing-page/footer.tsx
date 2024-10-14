@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Text } from '@/design-system/text/text';
+
 import {
   FacebookIcon,
   InstagramIcon,
   TwitterIcon,
-} from '@/design-system/icons/social-media';
+  Text,
+} from '@/design-system';
 
 // This data could be moved to a separate method that will allow to fetch the data from the API for example.
 const menuItems = [

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Variant, textClasses } from './config';
 import { TextVariant } from './text-variant';
 

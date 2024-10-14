@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Quiz } from '@/app/quiz';
 import { useHandleEscapeKey } from './application/use-handle-escape-key';
 import { quizStorage } from './application/quiz-storage';
-import { Text } from '@/design-system/text/text';
-import Button from '@/design-system/button/button';
+import { Button, Text } from '@/design-system';
 import { getQuizInitialState } from './application/quiz-initial-state';
 
 interface Props {

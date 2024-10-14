@@ -2,7 +2,7 @@
 
 import React, { ComponentType } from 'react';
 import { Question, useQuizFlow } from '../application/use-quiz-flow';
-import Button from '@/design-system/button/button';
+import { Button } from '@/design-system';
 import { AnswerIndex, Answers, QuestionIndex, QuizState } from '@/app/quiz';
 import { QuestionFactory } from './question-factory';
 import { DefaultFinalState } from './default-final-state';

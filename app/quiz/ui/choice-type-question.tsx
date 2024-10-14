@@ -2,7 +2,7 @@ import {
   AnswerQuestion,
   ChoiceTypeQuestion as ChoiceTypeQuestionType,
 } from '../application/use-quiz-flow';
-import { Text } from '@/design-system/text/text';
+import { Text } from '@/design-system';
 
 interface Props {
   question: ChoiceTypeQuestionType;

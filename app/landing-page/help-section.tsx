@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Text } from '@/design-system/text/text';
+import { Text } from '@/design-system';
 import { BigNumberBg } from './big-number-bg';
 
 interface ImageDetails {

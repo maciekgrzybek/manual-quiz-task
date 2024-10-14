@@ -1,4 +1,4 @@
-import { Text } from '@/design-system/text/text';
+import { Text } from '@/design-system';
 import { QuizState } from '../domain/quiz-flow';
 
 interface Props {

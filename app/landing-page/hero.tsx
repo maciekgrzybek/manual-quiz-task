@@ -1,8 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { Text } from '@/design-system/text/text';
-import Button from '@/design-system/button/button';
+import { Button, Text } from '@/design-system';
 import Link from 'next/link';
 import { useQuizVisibility } from './application/use-quiz-visibility';
 import QuizWrapper from './quiz-wrapper';
