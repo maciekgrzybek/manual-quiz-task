@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 interface Props {
   isOpenByDefault?: boolean;
@@ -10,9 +10,25 @@ interface Props {
 export const useQuizVisibility = ({ isOpenByDefault = false }: Props = {}) => {
   const [isOpen, setIsOpen] = useState(isOpenByDefault);
 
+  const handleOpen = useRef(() => {
+    const body = document.querySelector('body');
+    if (body) {
+      body.style.overflow = 'hidden';
+    }
+    setIsOpen(true);
+  });
+
+  const handleClose = useRef(() => {
+    const body = document.querySelector('body');
+    if (body) {
+      body.style.overflow = 'auto';
+    }
+    setIsOpen(false);
+  });
+
   return {
     isOpen,
-    open: () => setIsOpen(true),
-    close: () => setIsOpen(false),
+    open: handleOpen.current,
+    close: handleClose.current,
   };
 };
