@@ -1,6 +1,6 @@
 import HelpSection, { Props as HelpSectionProps } from './help-section';
 
-// This data can be fetched from an API and still maintain the SSG
+// This data could be moved to a separate method that will allow to fetch the data from the API for example.
 const helpSections: Omit<HelpSectionProps, 'index' | 'direction'>[] = [
   {
     title: "Hair loss needn't be irreversible. We can help!",

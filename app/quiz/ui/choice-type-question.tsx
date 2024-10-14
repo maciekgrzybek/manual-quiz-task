@@ -23,7 +23,10 @@ export function ChoiceTypeQuestion({
       <div className="grid grid-cols-2 gap-3">
         {question.options.map((answer, index) => (
           <button
-            key={index} // TODO figure this out
+            // In this case, if we assume that questions lists is stable (no filtering or sorting)
+            // `index` would be enough as a key. But ideally we should have some IDs on the answers
+            // so we can make it super safe.
+            key={index}
             onClick={() => handleAnswer(index, answer.isRejection)}
             className={`inline-flex items-center justify-center w-full p-5  border-2 rounded-lg border-neutral-100  hover:text-neutral-900 hover:border-neutral-300 ${
               currentAnswerIndex === index ? 'bg-brand-primary-100' : 'bg-white'

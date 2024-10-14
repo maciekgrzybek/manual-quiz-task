@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ttNorms } from './fonts/custom-fonts';
 
-// TODO: Move that in more relevant place
+// Metadata should probably live in a separate folder/module, but for now we can keep it here.
 export const metadata: Metadata = {
   title: 'Manual Landing Page Test',
   description: 'Manual Landing Page Test',

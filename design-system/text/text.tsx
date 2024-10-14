@@ -5,7 +5,7 @@ import { TextVariant } from './text-variant';
 interface Props {
   variant: Variant;
   children: React.ReactNode;
-  // TODO: Figure out how to make this stricter as we don't
+  // We could make this stricter if needed as we don't
   // want to allow to abuse the defined variants.
   className?: string;
 }

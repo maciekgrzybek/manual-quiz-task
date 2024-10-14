@@ -7,7 +7,7 @@ import {
   TwitterIcon,
 } from '@/design-system/icons/social-media';
 
-// TODO: Move to a hook or something
+// This data could be moved to a separate method that will allow to fetch the data from the API for example.
 const menuItems = [
   {
     title: 'PRODUCT',
@@ -37,6 +37,7 @@ const menuItems = [
   },
 ];
 
+// This data could be moved to a separate method that will allow to fetch the data from the API for example.
 const socialMediaLinks = [
   { name: 'Facebook', href: '#', Icon: FacebookIcon },
   { name: 'Instagram', href: '#', Icon: InstagramIcon },

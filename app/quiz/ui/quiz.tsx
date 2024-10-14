@@ -22,7 +22,7 @@ export function Quiz({
   questions,
   onAnswer,
   previousQuizState,
-  // That way we can pass a specific FinalState component
+  // That way we can pass a specific FinalState component.
   FinalStateComponent = DefaultFinalState,
 }: Props) {
   const {
